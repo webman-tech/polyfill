@@ -13,6 +13,7 @@
   },
   "require-dev": {
     "symfony/http-foundation": "^5.4",
-    "workerman/webman-framework": "^1.4"
+    "workerman/webman-framework": "^1.4",
+    "illuminate/http": "^8.83"
   }
 }
