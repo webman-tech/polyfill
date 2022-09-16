@@ -1,9 +1,9 @@
 <?php
 
-namespace Kriss\WebmanPolyfill;
+namespace WebmanTech\Polyfill;
 
 use Illuminate\Http\Request;
-use Kriss\WebmanPolyfill\Traits\SymfonyRequestWrapper;
+use WebmanTech\Polyfill\Traits\SymfonyRequestWrapper;
 
 class LaravelRequest extends Request
 {

@@ -1,14 +1,14 @@
 {
-  "name": "kriss/webman-polyfill",
+  "name": "webmantech/polyfill",
   "type": "library",
   "license": "MIT",
-  "description": "Webman plugin kriss/webman-polyfill",
+  "description": "Webman plugin webmantech/polyfill",
   "require": {
     "php": ">=7.2"
   },
   "autoload": {
     "psr-4": {
-      "Kriss\\WebmanPolyfill\\": "src"
+      "WebmanTech\\Polyfill\\": "src"
     }
   },
   "require-dev": {

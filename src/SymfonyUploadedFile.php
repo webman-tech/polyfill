@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanPolyfill;
+namespace WebmanTech\Polyfill;
 
-use Kriss\WebmanPolyfill\Traits\SymfonyUploadedFileWrapper;
+use WebmanTech\Polyfill\Traits\SymfonyUploadedFileWrapper;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class SymfonyUploadedFile extends UploadedFile

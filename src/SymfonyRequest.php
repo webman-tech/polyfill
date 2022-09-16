@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanPolyfill;
+namespace WebmanTech\Polyfill;
 
-use Kriss\WebmanPolyfill\Traits\SymfonyRequestWrapper;
+use WebmanTech\Polyfill\Traits\SymfonyRequestWrapper;
 use Symfony\Component\HttpFoundation\Request;
 
 class SymfonyRequest extends Request

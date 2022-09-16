@@ -1,9 +1,9 @@
 <?php
 
-namespace Kriss\WebmanPolyfill;
+namespace WebmanTech\Polyfill;
 
 use Illuminate\Http\UploadedFile;
-use Kriss\WebmanPolyfill\Traits\SymfonyUploadedFileWrapper;
+use WebmanTech\Polyfill\Traits\SymfonyUploadedFileWrapper;
 
 class LaravelUploadedFile extends UploadedFile
 {

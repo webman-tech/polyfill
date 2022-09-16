@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanPolyfill\Traits;
+namespace WebmanTech\Polyfill\Traits;
 
 use Webman\Http\UploadFile;
 

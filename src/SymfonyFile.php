@@ -1,6 +1,6 @@
 <?php
 
-namespace Kriss\WebmanPolyfill;
+namespace WebmanTech\Polyfill;
 
 use Symfony\Component\HttpFoundation\File\File;
 

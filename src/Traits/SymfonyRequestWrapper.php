@@ -1,8 +1,8 @@
 <?php
 
-namespace Kriss\WebmanPolyfill\Traits;
+namespace WebmanTech\Polyfill\Traits;
 
-use Kriss\WebmanPolyfill\SymfonyUploadedFile;
+use WebmanTech\Polyfill\SymfonyUploadedFile;
 use Webman\Http\Request;
 use Webman\Http\UploadFile;
 
