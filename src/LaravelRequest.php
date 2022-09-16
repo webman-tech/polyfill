@@ -2,10 +2,10 @@
 
 namespace Kriss\WebmanPolyfill;
 
+use Illuminate\Http\Request;
 use Kriss\WebmanPolyfill\Traits\SymfonyRequestWrapper;
-use Symfony\Component\HttpFoundation\Request;
 
-class SymfonyRequest extends Request
+class LaravelRequest extends Request
 {
     use SymfonyRequestWrapper;
 }
