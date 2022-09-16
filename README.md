@@ -1,3 +1,3 @@
-# webmantech/webman-polyfill
+# webman-tech/polyfill
 
 webman 对常用框架的兼容处理
