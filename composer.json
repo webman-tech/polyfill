@@ -12,8 +12,11 @@
     }
   },
   "require-dev": {
+    "illuminate/http": "^8.83",
     "symfony/http-foundation": "^5.4",
-    "workerman/webman-framework": "^1.4",
-    "illuminate/http": "^8.83"
+    "workerman/webman-framework": "^1.4"
+  },
+  "config": {
+    "sort-packages": true
   }
 }
