@@ -13,6 +13,11 @@ class LaravelUploadedFile extends UploadedFile
     use SymfonyUploadedFileWrapper;
 
     /**
+     * @var FilesystemFactory
+     */
+    protected $_filesystem;
+
+    /**
      * 移除对 illuminate/container 的依赖
      * @inheritDoc
      */
@@ -26,8 +31,17 @@ class LaravelUploadedFile extends UploadedFile
             // 必须先定义容器依赖
             throw new \InvalidArgumentException('must define dependence of ' . FilesystemFactory::class);
         }
+        if (!$this->_filesystem) {
+            $filesystem = config('plugin.webman-tech.polyfill.app.laravel.filesystem');
+            if ($filesystem instanceof \Closure) {
+                $this->_filesystem = call_user_func($filesystem);
+            }
+        }
+        if (!$this->_filesystem instanceof FilesystemFactory) {
+            throw new \InvalidArgumentException('filesystem Not ' . FilesystemFactory::class);
+        }
 
-        return Container::get(FilesystemFactory::class)->disk($disk)->putFileAs(
+        return $this->_filesystem->disk($disk)->putFileAs(
             $path, $this, $name, $options
         );
     }
