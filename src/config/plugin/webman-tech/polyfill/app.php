@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Contracts\Filesystem\Factory as FilesystemFactory;
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use support\Container;
 
 return [
@@ -8,17 +10,17 @@ return [
         /**
          * 如果用到 Laravel UploadedFile 中的 store 或 storeAs 相关方法，需要提供 filesystemFactory 实现
          */
-        'filesystem' => function () {
-            return Container::get(\Illuminate\Contracts\Filesystem\Factory::class);
+        'filesystem' => function (): FilesystemFactory {
+            return Container::get(FilesystemFactory::class);
         },
         /**
          * 如果用到 Laravel Request 中的 validate，需要提供 validationFactory 实现
          */
-        'validation' => function() {
+        'validation' => function (): ValidationFactory {
             if (function_exists('validator')) {
                 return validator();
             }
-            return Container::get(\Illuminate\Contracts\Validation\Factory::class);
+            return Container::get(ValidationFactory::class);
         }
     ],
 ];
