@@ -6,6 +6,12 @@ webman 是基于 php-cli 的框架，这区别于传统的 php-fpm 框架，因�
 
 因此本扩展的目标是使得 webman 下能快速使用如 SymfonyRequest 等类
 
+## 安装
+
+```bash
+composer require webman-tech/polyfill
+```
+
 ## Symfony
 
 ```php
