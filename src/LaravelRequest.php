@@ -23,16 +23,6 @@ class LaravelRequest extends Request
     }
 
     /**
-     * @inheritDoc
-     */
-    protected function convertUploadedFiles(array $files)
-    {
-        return array_map(function (UploadedFile $file) {
-            return LaravelUploadedFile::wrapper($file);
-        }, parent::convertUploadedFiles($files));
-    }
-
-    /**
      * @see https://github.com/laravel/framework/blob/9.x/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php
      * @see FoundationServiceProvider::registerRequestValidation()
      */
@@ -57,5 +47,23 @@ class LaravelRequest extends Request
                 throw $e;
             }
         });
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function capture()
+    {
+        throw new \InvalidArgumentException('Not support');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function convertUploadedFiles(array $files)
+    {
+        return array_map(function (UploadedFile $file) {
+            return LaravelUploadedFile::wrapper($file);
+        }, parent::convertUploadedFiles($files));
     }
 }

@@ -13,10 +13,27 @@ trait SymfonyRequestWrapper
         $files = array_map(function (UploadFile $file) {
             return SymfonyUploadedFile::wrapper($file);
         }, $request->file());
-        $server = array_merge([
-            'HTTP_HOST' => $request->host(),
+        // 以下 SERVER 参数在 SymfonyRequest 中被使用到
+        $server = [
+            /**
+             * 目前没有更好的获取办法，按道理可以通过 $request->connection->protocol 或 Workerman\Protocols\Http 来判断
+             */
+            'SERVER_PROTOCOL' => 'HTTP/1.1',
+            'REMOTE_ADDR' => $request->getRemoteIp(),
+            'SERVER_PORT' => $request->getLocalPort(),
+            'QUERY_STRING' => $request->queryString(),
+            /**
+             * https://www.workerman.net/q/8167
+             */
+            'HTTPS' => $request->header('https') ?: $request->getLocalPort() == 443,
+            'SERVER_NAME' => $request->getLocalIp(),
+            'SERVER_ADDR' => $request->getLocalIp(),
+            'REQUEST_METHOD' => strtoupper($request->method()),
             'REQUEST_URI' => $request->uri(),
-        ], $_SERVER);
+        ];
+        foreach ($request->header() as $key => $value) {
+            $server['HTTP_' . str_replace('-', '_', strtoupper($key))] = $value;
+        }
 
         $self = new self(
             $request->get(),
