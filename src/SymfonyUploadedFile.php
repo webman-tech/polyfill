@@ -2,8 +2,8 @@
 
 namespace WebmanTech\Polyfill;
 
-use WebmanTech\Polyfill\Traits\SymfonyUploadedFileWrapper;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use WebmanTech\Polyfill\Traits\SymfonyUploadedFileWrapper;
 
 class SymfonyUploadedFile extends UploadedFile
 {

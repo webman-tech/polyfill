@@ -14,6 +14,10 @@ composer require webman-tech/polyfill
 
 ## Symfony
 
+```bash
+composer require symfony/http-foundation
+```
+
 ```php
 namespace app\controller;
 
@@ -32,6 +36,10 @@ class FooController
 ```
 
 ## Laravel
+
+```bash
+composer require illuminate/http
+```
 
 ```php
 namespace app\controller;
