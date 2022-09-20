@@ -34,7 +34,7 @@ trait SymfonyRequestWrapper
     /**
      * @inheritDoc
      */
-    public static function createFromGlobals()
+    public static function createFromGlobals(): static
     {
         throw new \InvalidArgumentException('Not support');
     }
