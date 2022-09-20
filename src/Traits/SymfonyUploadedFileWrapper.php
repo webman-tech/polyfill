@@ -2,8 +2,9 @@
 
 namespace WebmanTech\Polyfill\Traits;
 
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Webman\File;
+use Webman\File as WebmanFile;
 use Webman\Http\UploadFile;
 
 trait SymfonyUploadedFileWrapper
@@ -58,10 +59,14 @@ trait SymfonyUploadedFileWrapper
         // 使用 webman 的文件移动功能
         $file = $this->_originFile instanceof UploadFile
             ? $this->_originFile
-            : new File($this->getRealPath());
+            : new WebmanFile($this->getRealPath());
         $name = $name ?: $this->getClientOriginalName();
 
-        return $file->move(rtrim($directory, '/\\') . DIRECTORY_SEPARATOR . $name);
+        $file = $file->move(rtrim($directory, '/\\') . DIRECTORY_SEPARATOR . $name);
+        return new File(
+            $file->getRealPath(),
+            false
+        );
     }
 
     /**
@@ -70,6 +75,6 @@ trait SymfonyUploadedFileWrapper
      */
     public static function getMaxFilesize()
     {
-        return config('server.max_package_size', 10*1024*1024);
+        return config('server.max_package_size', 10 * 1024 * 1024);
     }
 }
