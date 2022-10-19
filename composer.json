@@ -15,6 +15,8 @@
     "illuminate/http": "^v9.30",
     "illuminate/validation": "^9.30",
     "symfony/http-foundation": "^6.1",
+    "webman-tech/laravel-filesystem": "^2.1",
+    "webman-tech/laravel-validation": "^1.1",
     "workerman/webman-framework": "^1.4"
   },
   "config": {
