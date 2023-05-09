@@ -2,6 +2,7 @@
 
 namespace WebmanTech\Polyfill\Traits;
 
+use InvalidArgumentException;
 use WebmanTech\Polyfill\SymfonyUploadedFile;
 use Webman\Http\Request;
 use Webman\Http\UploadFile;
@@ -10,9 +11,7 @@ trait SymfonyRequestWrapper
 {
     public static function wrapper(Request $request): self
     {
-        $files = array_map(function (UploadFile $file) {
-            return SymfonyUploadedFile::wrapper($file);
-        }, $request->file());
+        $files = self::wrapperFiles($request->file());
         // 以下 SERVER 参数在 SymfonyRequest 中被使用到
         $server = [
             /**
@@ -53,6 +52,19 @@ trait SymfonyRequestWrapper
      */
     public static function createFromGlobals()
     {
-        throw new \InvalidArgumentException('Not support');
+        throw new InvalidArgumentException('Not support');
+    }
+
+    private static function wrapperFiles(array $files)
+    {
+        return array_map(function ($file) {
+            if ($file instanceof UploadFile) {
+                return SymfonyUploadedFile::wrapper($file);
+            }
+            if (is_array($file)) {
+                return self::wrapperFiles($file);
+            }
+            throw new InvalidArgumentException('file type error');
+        }, $files);
     }
 }
