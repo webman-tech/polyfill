@@ -17,8 +17,12 @@ class LaravelUploadedFile extends UploadedFile
      * 移除对 illuminate/container 的依赖
      * @inheritDoc
      */
-    public function storeAs($path, $name, $options = [])
+    public function storeAs($path, $name = null, $options = [])
     {
+        if (is_null($name) || is_array($name)) {
+            [$path, $name, $options] = ['', $path, $name ?? []];
+        }
+
         $options = $this->parseOptions($options);
 
         $disk = Arr::pull($options, 'disk');
